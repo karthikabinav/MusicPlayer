@@ -1,5 +1,4 @@
 import java.awt.Dimension;
-import java.awt.GridLayout;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.io.IOException;
@@ -73,7 +72,7 @@ public class GraphicalInterface {
 		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		window.setMinimumSize(new Dimension(400, 200));
 
-		player = new JPanel(new GridLayout(3, 1));
+		player = new JPanel();
 		window.add(player);
 		window.pack();
 		window.setVisible(true);
