@@ -1,10 +1,9 @@
-import java.awt.Dimension;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-import java.io.IOException;
+/*
+ * Class which builds the GUI
+ * Author : Karthik Abinav S ; CS10B057
+ */
 
-import javax.sound.sampled.LineUnavailableException;
-import javax.sound.sampled.UnsupportedAudioFileException;
+import java.awt.Dimension;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -17,56 +16,46 @@ public class GraphicalInterface {
 	static JButton pause;
 	static JButton open;
 
+	/*
+	 * Main method to initiate the GUI
+	 * 
+	 * @params : String []
+	 * 
+	 * @return : void
+	 */
 	public static void main(String args[]) {
 		GUI();
 	}
 
+	/*
+	 * Function which creates the open file and stop buttons
+	 * 
+	 * @params : void
+	 * 
+	 * @return : void
+	 */
 	public static void createButtons() {
+
 		open = new JButton();
 		open.setText("Open");
-		open.addMouseListener(new MouseListener() {
-
-			@Override
-			public void mouseReleased(MouseEvent arg0) {
-				// TODO Auto-generated method stub
-
-			}
-
-			@Override
-			public void mousePressed(MouseEvent arg0) {
-				try {
-					Logic.openFile();
-				} catch (UnsupportedAudioFileException e) {
-					e.printStackTrace();
-				} catch (IOException e) {
-					e.printStackTrace();
-				} catch (LineUnavailableException e) {
-					e.printStackTrace();
-				}
-			}
-
-			@Override
-			public void mouseExited(MouseEvent arg0) {
-				// TODO Auto-generated method stub
-
-			}
-
-			@Override
-			public void mouseEntered(MouseEvent arg0) {
-				// TODO Auto-generated method stub
-
-			}
-
-			@Override
-			public void mouseClicked(MouseEvent arg0) {
-				// TODO Auto-generated method stub
-
-			}
-		});
+		Listener.openListener();
 		player.add(open);
+
+		stop = new JButton();
+		stop.setText("Stop");
+		Listener.stopListener();
+		player.add(stop);
+
 		window.pack();
 	}
 
+	/*
+	 * Initialises the basic GUI
+	 * 
+	 * @params: void
+	 * 
+	 * @return : void
+	 */
 	public static void GUI() {
 		window = new JFrame("Wave Player");
 		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

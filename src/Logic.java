@@ -1,3 +1,7 @@
+/*
+ * Class contains the logic for opening,playing and stopping a .wav file
+ * Author : Karthik Abinav S; CS10B057
+ */
 import java.io.File;
 import java.io.IOException;
 
@@ -26,6 +30,13 @@ public class Logic {
 	static JButton pause;
 	static JButton open;
 
+	/*
+	 * Function to sync the variables between GUI and logic
+	 * 
+	 * @params: void
+	 * 
+	 * @return : void
+	 */
 	private static void setter() {
 		window = GraphicalInterface.window;
 		player = GraphicalInterface.player;
@@ -33,14 +44,30 @@ public class Logic {
 		stop = GraphicalInterface.stop;
 		pause = GraphicalInterface.pause;
 		open = GraphicalInterface.open;
+
 	}
 
-	public static void pauseSong() {
+	/*
+	 * Function to stop the currently playing song
+	 * 
+	 * @params:void
+	 * 
+	 * @return:void
+	 */
+	public static void stopSong() {
 		if (audioSource.isOpen()) {
+			System.out.println("File has been stopped");
 			audioSource.stop();
 		}
 	}
 
+	/*
+	 * Function to open the .wav file and start playing it
+	 * 
+	 * @params:void
+	 * 
+	 * @return : void
+	 */
 	public static void openFile() throws UnsupportedAudioFileException,
 			IOException, LineUnavailableException {
 		setter();
